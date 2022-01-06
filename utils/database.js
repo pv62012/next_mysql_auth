@@ -29,19 +29,12 @@ const executeQuery = (query, arraParams) => {
     try {
       pool.query(query, arraParams, (err, data) => {
         if (err) {
-          // if (err.code == "ER_DUP_ENTRY")
-          //   return res.status(500).json(err.sqlMessage);
-          // res.status(500).json(err.sqlMessage);
           reject(err);
-          return err;
         }
-        return resolve(data);
-        // if (data) return res.status(200).json(data);
+        resolve(data);
       });
     } catch (err) {
-      // console.log("try catch err", err);
-      // res.status(500).json(err);
-      return reject(err);
+      reject(err);
     }
   });
 };

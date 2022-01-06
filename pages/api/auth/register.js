@@ -25,7 +25,7 @@ const register = async (req, res) => {
     if (errMssg) return res.status(400).json({ err: errMssg });
     try {
       const createTable =
-        "create table if not exists users ( id int not null auto_increment, name varchar(255), email varchar(255) not null unique, password varchar(255), primary key(id) )";
+        "create table if not exists users ( id int not null auto_increment, name varchar(255), email varchar(255) not null unique, password varchar(255), primary key(id), role varchar(20) default 'user', resetPasswordToken varchar(255), resetPasswordExpire Date  )";
       pool.query(createTable, (err, data) => {
         if (err) {
           return res.json({ err: "Something went wrong", err });
