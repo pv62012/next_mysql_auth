@@ -31,11 +31,11 @@ export default async function handler(req, res) {
           }
 
           try {
-            // sendEmail({
-            //   email,
-            //   subject: `Your Password recovery`,
-            //   message,
-            // });
+            sendEmail({
+              email,
+              subject: `Your Password recovery`,
+              message,
+            });
 
             return res.status(200).json({
               success: true,
